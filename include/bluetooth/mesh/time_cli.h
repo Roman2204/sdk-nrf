@@ -27,8 +27,9 @@ struct bt_mesh_time_cli;
  *
  * @brief Initialization parameters for a @ref bt_mesh_time_cli instance.
  */
-#define BT_MESH_TIME_CLI_INIT                                                  \
+#define BT_MESH_TIME_CLI_INIT(_handlers)                                       \
 	{                                                                      \
+		.handlers = _handlers,                                         \
 		.pub = {.msg = NET_BUF_SIMPLE(BT_MESH_MODEL_BUF_LEN(           \
 				BT_MESH_TIME_OP_TIME_SET,                      \
 				BT_MESH_TIME_MSG_LEN_TIME_SET)) }              \
@@ -46,6 +47,49 @@ struct bt_mesh_time_cli;
 		BT_MESH_MODEL_USER_DATA(struct bt_mesh_time_cli, _cli),        \
 		&_bt_mesh_time_cli_cb)
 
+/** Time Client state access handlers. */
+struct bt_mesh_time_cli_handlers {
+	/** @brief Time status message handler.
+	 *
+	 * @param[in] cli Client that received the status message.
+	 * @param[in] ctx Context of the message.
+	 * @param[in] status Time status contained in the message.
+	 */
+	void (*const time_status)(struct bt_mesh_time_cli *cli,
+				  struct bt_mesh_msg_ctx *ctx,
+				  const struct bt_mesh_time_status *status);
+
+	/** @brief Time Zone status message handler.
+	 *
+	 * @param[in] cli Client that received the status message.
+	 * @param[in] ctx Context of the message.
+	 * @param[in] status Time Zone status contained in the message.
+	 */
+	void (*const time_zone_status)(
+		struct bt_mesh_time_cli *cli, struct bt_mesh_msg_ctx *ctx,
+		const struct bt_mesh_time_zone_status *status);
+
+	/** @brief TAI-UTC Delta status message handler.
+	 *
+	 * @param[in] cli Client that received the status message.
+	 * @param[in] ctx Context of the message.
+	 * @param[in] status TAI-UTC delta status contained in the message.
+	 */
+	void (*const tai_utc_delta_status)(
+		struct bt_mesh_time_cli *cli, struct bt_mesh_msg_ctx *ctx,
+		const struct bt_mesh_time_tai_utc_delta_status *status);
+
+	/** @brief Time Role status message handler.
+	 *
+	 * @param[in] cli Client that received the status message.
+	 * @param[in] ctx Context of the message.
+	 * @param[in] time_role Time Role of the server.
+	 */
+	void (*const time_role_status)(struct bt_mesh_time_cli *cli,
+				       struct bt_mesh_msg_ctx *ctx,
+				       enum bt_mesh_time_role time_role);
+};
+
 /**
  * Time Client instance. Should be initialized with
  * @ref BT_MESH_TIME_CLI_INIT.
@@ -57,6 +101,8 @@ struct bt_mesh_time_cli {
 	struct bt_mesh_model_pub pub;
 	/** Acknowledged message tracking. */
 	struct bt_mesh_model_ack_ctx ack_ctx;
+	/** Handler function structure. */
+	const struct bt_mesh_time_cli_handlers *handlers;
 };
 
 /** @brief Get the current Time Status of a Time Server.

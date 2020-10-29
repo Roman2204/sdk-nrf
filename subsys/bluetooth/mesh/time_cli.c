@@ -28,6 +28,10 @@ static void handle_status(struct bt_mesh_model *model,
 		*rsp = status;
 		model_ack_rx(&cli->ack_ctx);
 	}
+
+	if (cli->handlers->time_status) {
+		cli->handlers->time_status(cli, ctx, &status);
+	}
 }
 
 static void time_role_status_handle(struct bt_mesh_model *model,
@@ -39,7 +43,7 @@ static void time_role_status_handle(struct bt_mesh_model *model,
 	}
 
 	struct bt_mesh_time_cli *cli = model->user_data;
-	uint8_t status;
+	enum bt_mesh_time_role status;
 
 	status = net_buf_simple_pull_u8(buf);
 
@@ -48,6 +52,10 @@ static void time_role_status_handle(struct bt_mesh_model *model,
 		uint8_t *rsp = (uint8_t *)cli->ack_ctx.user_data;
 		*rsp = status;
 		model_ack_rx(&cli->ack_ctx);
+	}
+
+	if (cli->handlers->time_role_status) {
+		cli->handlers->time_role_status(cli, ctx, status);
 	}
 }
 
@@ -76,6 +84,10 @@ static void time_zone_status_handle(struct bt_mesh_model *model,
 		*rsp = status;
 		model_ack_rx(&cli->ack_ctx);
 	}
+
+	if (cli->handlers->time_zone_status) {
+		cli->handlers->time_zone_status(cli, ctx, &status);
+	}
 }
 
 static void tai_utc_delta_status_handle(struct bt_mesh_model *model,
@@ -102,6 +114,10 @@ static void tai_utc_delta_status_handle(struct bt_mesh_model *model,
 				cli->ack_ctx.user_data;
 		*rsp = status;
 		model_ack_rx(&cli->ack_ctx);
+	}
+
+	if (cli->handlers->tai_utc_delta_status) {
+		cli->handlers->tai_utc_delta_status(cli, ctx, &status);
 	}
 }
 
