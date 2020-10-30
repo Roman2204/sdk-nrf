@@ -111,8 +111,7 @@ struct bt_mesh_time_cli {
  * @param[in]  ctx Message context, or NULL to use the configured publish
  *                 parameters.
  * @param[out] rsp Status response buffer, returning the Server's current time
- *                 Status, or NULL to keep
- *                 from blocking.
+ *                 Status, or NULL to keep from blocking.
  *
  * @retval 0              Successfully sent the message and populated
  *                        the @p rsp buffer.
@@ -123,7 +122,6 @@ struct bt_mesh_time_cli {
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_time_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
@@ -136,8 +134,7 @@ int bt_mesh_time_cli_time_get(struct bt_mesh_time_cli *cli,
  *                 parameters.
  * @param[in]  set Time Status parameter to set.
  * @param[out] rsp Status response buffer, returning the Server's current time
- *                 Status, or NULL to keep
- *                 from blocking.
+ *                 Status, or NULL to keep from blocking.
  *
  * @retval 0              Successfully sent the message and populated
  *                        the @p rsp buffer.
@@ -148,7 +145,6 @@ int bt_mesh_time_cli_time_get(struct bt_mesh_time_cli *cli,
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_time_set(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
@@ -161,8 +157,7 @@ int bt_mesh_time_cli_time_set(struct bt_mesh_time_cli *cli,
  * @param[in]  ctx Message context, or NULL to use the configured publish
  *                 parameters.
  * @param[out] rsp Status response buffer, returning the Server's current
- *                 Time Zone Offset new state, or NULL
- *                 to keep from blocking.
+ *                 Time Zone Offset new state, or NULL to keep from blocking.
  *
  * @retval 0              Successfully sent the message and populated
  *                        the @p rsp buffer.
@@ -173,7 +168,6 @@ int bt_mesh_time_cli_time_set(struct bt_mesh_time_cli *cli,
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_zone_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
@@ -189,8 +183,7 @@ int bt_mesh_time_cli_zone_get(struct bt_mesh_time_cli *cli,
  *                 parameters.
  * @param[in]  set Time Zone Change parameters to set.
  * @param[out] rsp Status response buffer, returning the Server's current time
- *                 Status, or NULL to keep
- *                 from blocking.
+ *                 Status, or NULL to keep from blocking.
  *
  * @retval 0              Successfully sent the message and populated
  *                        the @p rsp buffer.
@@ -201,7 +194,6 @@ int bt_mesh_time_cli_zone_get(struct bt_mesh_time_cli *cli,
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_zone_set(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
@@ -214,8 +206,7 @@ int bt_mesh_time_cli_zone_set(struct bt_mesh_time_cli *cli,
  * @param[in]  ctx Message context, or NULL to use the configured publish
  *                 parameters.
  * @param[out] rsp Status response buffer, returning the Server's TAI-UTC
- *                 Delta new state, or NULL to keep
- *                 from blocking.
+ *                 Delta new state, or NULL to keep from blocking.
  *
  * @retval 0              Successfully sent the message and populated
  *                        the @p rsp buffer.
@@ -226,7 +217,6 @@ int bt_mesh_time_cli_zone_set(struct bt_mesh_time_cli *cli,
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_tai_utc_delta_get(
 	struct bt_mesh_time_cli *cli, struct bt_mesh_msg_ctx *ctx,
@@ -253,7 +243,6 @@ int bt_mesh_time_cli_tai_utc_delta_get(
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_tai_utc_delta_set(
 	struct bt_mesh_time_cli *cli, struct bt_mesh_msg_ctx *ctx,
@@ -277,7 +266,6 @@ int bt_mesh_time_cli_tai_utc_delta_set(
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_role_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx, uint8_t *rsp);
@@ -300,7 +288,6 @@ int bt_mesh_time_cli_role_get(struct bt_mesh_time_cli *cli,
  *                        is not configured.
  * @retval -EAGAIN        The device has not been provisioned.
  * @retval -ETIMEDOUT     The request timed out without a response.
- * @retval -EFAULT        Response buffer pointer is NULL.
  */
 int bt_mesh_time_cli_role_set(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx, const uint8_t *set,

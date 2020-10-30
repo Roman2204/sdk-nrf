@@ -163,10 +163,6 @@ int bt_mesh_time_cli_time_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
 			      struct bt_mesh_time_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	return get_msg(cli, ctx, rsp, BT_MESH_TIME_OP_TIME_GET,
 		       BT_MESH_TIME_OP_TIME_STATUS);
 }
@@ -176,10 +172,6 @@ int bt_mesh_time_cli_time_set(struct bt_mesh_time_cli *cli,
 			      const struct bt_mesh_time_status *set,
 			      struct bt_mesh_time_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	BT_MESH_MODEL_BUF_DEFINE(msg, BT_MESH_TIME_OP_TIME_SET,
 				 BT_MESH_TIME_MSG_LEN_TIME_SET);
 	bt_mesh_model_msg_init(&msg, BT_MESH_TIME_OP_TIME_SET);
@@ -194,10 +186,6 @@ int bt_mesh_time_cli_zone_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx,
 			      struct bt_mesh_time_zone_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	return get_msg(cli, ctx, rsp, BT_MESH_TIME_OP_TIME_ZONE_GET,
 		       BT_MESH_TIME_OP_TIME_ZONE_STATUS);
 }
@@ -207,10 +195,6 @@ int bt_mesh_time_cli_zone_set(struct bt_mesh_time_cli *cli,
 			      const struct bt_mesh_time_zone_change *set,
 			      struct bt_mesh_time_zone_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	BT_MESH_MODEL_BUF_DEFINE(msg, BT_MESH_TIME_OP_TIME_ZONE_SET,
 				 BT_MESH_TIME_MSG_LEN_TIME_ZONE_SET);
 	bt_mesh_model_msg_init(&msg, BT_MESH_TIME_OP_TIME_ZONE_SET);
@@ -226,10 +210,6 @@ int bt_mesh_time_cli_tai_utc_delta_get(
 	struct bt_mesh_time_cli *cli, struct bt_mesh_msg_ctx *ctx,
 	struct bt_mesh_time_tai_utc_delta_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	return get_msg(cli, ctx, rsp, BT_MESH_TIME_OP_TAI_UTC_DELTA_GET,
 		       BT_MESH_TIME_OP_TAI_UTC_DELTA_STATUS);
 }
@@ -239,10 +219,6 @@ int bt_mesh_time_cli_tai_utc_delta_set(
 	const struct bt_mesh_time_tai_utc_change *set,
 	struct bt_mesh_time_tai_utc_delta_status *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	BT_MESH_MODEL_BUF_DEFINE(msg, BT_MESH_TIME_OP_TAI_UTC_DELTA_SET,
 				 BT_MESH_TIME_MSG_LEN_TAI_UTC_DELTA_SET);
 	bt_mesh_model_msg_init(&msg, BT_MESH_TIME_OP_TAI_UTC_DELTA_SET);
@@ -258,10 +234,6 @@ int bt_mesh_time_cli_tai_utc_delta_set(
 int bt_mesh_time_cli_role_get(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx, uint8_t *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	return get_msg(cli, ctx, rsp, BT_MESH_TIME_OP_TIME_ROLE_GET,
 		       BT_MESH_TIME_OP_TIME_ROLE_STATUS);
 }
@@ -270,10 +242,6 @@ int bt_mesh_time_cli_role_set(struct bt_mesh_time_cli *cli,
 			      struct bt_mesh_msg_ctx *ctx, const uint8_t *set,
 			      uint8_t *rsp)
 {
-	if (rsp == NULL) {
-		return -EFAULT;
-	}
-
 	BT_MESH_MODEL_BUF_DEFINE(msg, BT_MESH_TIME_OP_TIME_ROLE_SET,
 				 BT_MESH_TIME_MSG_LEN_TIME_ROLE_SET);
 	bt_mesh_model_msg_init(&msg, BT_MESH_TIME_OP_TIME_ROLE_SET);
